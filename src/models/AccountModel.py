@@ -7,6 +7,14 @@ class AccountModel():
     #Para llamar el metodo sin necesidad de instanciar la clase
     @classmethod
     def get_accounts(self):
+        '''
+    Obtiene las cuentas almacenadas en la base de datos
+    Args:
+        None
+    Returns:
+        array: regresa todas las cuentas obtenidas por la consulta
+        objecto: regresa un objeto de exception
+    '''
         try:
             connection = get_connection()
             accounts=[] # Lista de cuentas bancarias 
@@ -30,6 +38,14 @@ class AccountModel():
     #Para llamar el metodo sin necesidad de instanciar la clase
     @classmethod
     def get_account(self,id):
+        '''
+    Obtiene una cuenta obtenida de las cuentas de banco
+    Args:
+        id(string): El identificador de las cuentas de usuario, es decir el numero de cuenta
+    Returns:
+        objeto: regresa un objeto json que representa una cuenta
+        objeto: regresa un objeto de exception
+    '''
         try:
             connection = get_connection()
             
@@ -52,6 +68,14 @@ class AccountModel():
     #Metodo post (create)
     @classmethod
     def add_account(self,account):
+        '''
+    Crea una nueva cuenta de usuario
+    Args:
+        objeto: un objeto que representa una cuenta de banco
+    Returns:
+        objeto: regresa las filas afectadas por la consulta
+        objecto: regresa un objeto de exception
+    '''
         try:
             connection = get_connection()
             
@@ -71,6 +95,14 @@ class AccountModel():
     #Metodo patch (update)
     @classmethod
     def update_account(self,account):
+     '''
+    Actualiza el nombre de usuario de una cuenta de banco
+    Args:
+        objeto: un objeto que representa una cuenta de banco
+    Returns:
+        objeto: regresa las filas afectadas por la consulta
+        objecto: regresa un objeto de exception
+    '''
         try:
             connection = get_connection()
             
@@ -90,6 +122,14 @@ class AccountModel():
     #Metodo DELETE (DELETE ROW)
     @classmethod
     def delete_account(self,account):
+      '''
+    Elimina una cuenta de usuario
+    Args:
+        objeto: un objeto que representa una cuenta de banco
+    Returns:
+        objeto: regresa las filas afectadas por la consulta
+        objecto: regresa un objeto de exception
+    '''
         try:
             connection = get_connection()
             

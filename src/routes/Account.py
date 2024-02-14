@@ -16,6 +16,15 @@ main = Blueprint('account_blueprint',__name__)
 
 @main.route('/')
 def get_accounts():
+    '''
+    regresa las cuentas de usuario
+    Args:
+        None
+    Returns:
+        objeto: Regresa las cuentas de banco consultadas como objetos
+        objeto nulo: regresa un objeto vacio con el codigo 404
+        string: una excepcion si la consulta no funciono
+    '''
     try:
         accounts = AccountModel.get_accounts()
         return jsonify(accounts)
@@ -24,6 +33,15 @@ def get_accounts():
 #Para get con id
 @main.route('/<id>')
 def gat_account(id):
+    '''
+    regresa la cuenta de usuario
+    Args:
+        id(string): nuemero de cuenta bancaria de un usuario
+    Returns:
+        objeto: Regresa la cuenta de banco consultada como objeto
+        objeto nulo: regresa un objeto vacio con el codigo 404
+        string: una excepcion si la consulta no funciono
+    '''
     try:
         account = AccountModel.get_account(id)
         if account != None:
@@ -36,6 +54,15 @@ def gat_account(id):
 #Metodo post
 @main.route('/add', methods= ['POST'])
 def add_account():
+    '''
+    Funcion que crea una nueva cuenta bancaria
+    Args:
+        None
+    Returns:
+        objeto: Regresa el identificador de la cuenta creada
+        objeto nulo: regresa un objeto vacio con el codigo 404
+        string: una excepcion si la consulta no funciono
+    '''
     try:
         full_name= request.json['fullname']
         birthdate= request.json['birthdate']
@@ -70,6 +97,15 @@ def add_account():
 # edit method
 @main.route('/edit', methods= ['PATCH'])
 def edit_account():
+    '''
+    Funcion que actualiza el nombre de usuario de una cuenta bancaria
+    Args:
+        None
+    Returns:
+        string: Regresa una notificacion con el nombre actualizado
+        objeto nulo: regresa un objeto vacio con el codigo 404
+        string: una excepcion si la consulta no funciono
+    '''
     try:
         #print(request.json)
         full_name= request.json['fullname']
@@ -91,6 +127,15 @@ def edit_account():
 # DELETE method
 @main.route('/delete', methods= ['DELETE'])
 def delete_account():
+    '''
+    Funcion que elimina una cuenta bancaria
+    Args:
+        None
+    Returns:
+        string: regresa una notificacion de la cuenta eliminada.
+        objeto nulo: regresa un objeto vacio con el codigo 404
+        string: una excepcion si la consulta no funciono
+    '''
         try:
             
             account_number= request.json['account']

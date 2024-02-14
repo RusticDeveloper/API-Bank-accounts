@@ -8,12 +8,19 @@ app = Flask(__name__)
 
 
 #para las paginas no encontradas
-def page_not_found(error):
+def page_not_found():
+    '''
+    Muestra la pagina "no encontrado", si no existe la url dentro del api
+    Args:
+        None
+    Returns:
+        page: regresa una pagina html con el codigo 404     
+    '''
     return "<h1>Not found page</h1>", 404
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])
-
+    help(page_not_found)
     #Blueprints, para asignar mis rutas
     app.register_blueprint(Account.main, url_prefix='/api/accounts')
 
